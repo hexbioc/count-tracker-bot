@@ -4,8 +4,10 @@
   "description": "A Telegram bot to keep track of multiple counters",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node -r esm src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "local": "BOT_TOKEN=$(grep BOT_TOKEN .env | cut -d'=' -f2) nodemon -r esm src/index.js",
+    "heroku": "git push heroku master"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,10 @@
   },
   "homepage": "https://github.com/hexbioc/count-tracker-bot#readme",
   "dependencies": {
+    "esm": "^3.2.25",
     "telegraf": "^3.36.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

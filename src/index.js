@@ -1,7 +1,12 @@
-const Telegraf = require('telegraf')
+import Telegraf from 'telegraf'
+import { WELCOME } from './constants/strings'
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
-bot.command('oldschool', (ctx) => ctx.reply('Hello'))
-bot.command('modern', ({ reply }) => reply('Yo'))
-bot.command('hipster', Telegraf.reply('λ'))
+
+bot.start(ctx => ctx.reply(WELCOME))
+
+bot.command('add', ctx => {
+    ctx.reply('```pressed    add updated```')
+})
+
 bot.launch()
